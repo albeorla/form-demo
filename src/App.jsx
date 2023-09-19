@@ -10,7 +10,7 @@ import {
 } from "@cloudscape-design/components";
 import "@cloudscape-design/global-styles/index.css";
 import ReactHookFormDemo from "./demos/ReactHookFormDemo";
-import ReactBuiltInFormDemo from "./demos/CustomFormDemo";
+import CustomFormDemo from "./demos/CustomFormDemo";
 
 export default function App() {
   const appLayout = useRef();
@@ -36,7 +36,9 @@ export default function App() {
             <Alert type="info">
               <Box fontSize="body-m">
                 This demo compares the performance of forms build using React's
-                Built-in Hooks and React Hook Form. Pairing this demo with the{" "}
+                Built-in Hooks and React Hook Form.
+                <br />
+                Try pairing this demo with the{" "}
                 <a
                   href="https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi"
                   target="_blank"
@@ -44,13 +46,13 @@ export default function App() {
                 >
                   React Developer Tools
                 </a>{" "}
-                browser plugin is helpful way to understand their performance
-                characteristics.
+                browser plugin and use the profiler to for a more in-depth
+                comparison.
                 <Box
                   as="span"
                   margin={{ top: "xs" }}
                   color="text-status-info"
-                  fontSize="body-s"
+                  fontSize="body-m"
                 >
                   <strong>Note:</strong> To reset statistics, reload the page.
                 </Box>
@@ -58,7 +60,7 @@ export default function App() {
             </Alert>
             <ColumnLayout columns={2} borders>
               <ReactHookFormDemo />
-              <ReactBuiltInFormDemo />
+              <CustomFormDemo />
             </ColumnLayout>
           </SpaceBetween>
         </ContentLayout>

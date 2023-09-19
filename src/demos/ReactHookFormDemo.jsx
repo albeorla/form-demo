@@ -4,7 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import DemoFormTemplate from "../form/components/DemoFormTemplate";
 import { validationSchema } from "../form/utils/validationSchema";
-import { getDefaultState } from "../form/utils/stateUtils";
+import { getDefaultState, hasErrors } from "../form/utils/stateUtils";
 
 export default function ReactHookFormDemo() {
   const { handleSubmit, reset, control, formState } = useForm({
@@ -13,21 +13,24 @@ export default function ReactHookFormDemo() {
     defaultValues: getDefaultState(),
   });
 
-  const formErrorMsg =
-    formState.errors && Object.keys(formState.errors).length > 0
-      ? "Please fix the errors above and submit again."
-      : null;
-
-  const onSubmit = (submission) =>
-    console.log(JSON.stringify(submission, null, 2));
-
   return (
     <DemoFormTemplate
       title="React Hook Form"
       description="This form uses the React Hook Form library."
-      onSubmit={handleSubmit(onSubmit)}
       onReset={reset}
-      errorMsg={formErrorMsg}
+      onSubmit={handleSubmit((submission) => {
+        console.log(
+          JSON.stringify({
+            info: "Form was submitted successfully.",
+            submission,
+          })
+        );
+      })}
+      errorMsg={
+        hasErrors(formState.errors)
+          ? "Please fix the errors above and submit again."
+          : ""
+      }
     >
       <ControlledInput
         type="text"
