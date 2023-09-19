@@ -57,6 +57,7 @@ const ReactBuiltInFormDemo = () => {
     event.preventDefault();
     setForm(getDefaultState());
     setTouched(getDefaultTouched());
+    setErrors(getDefaultState());
   };
 
   return (
