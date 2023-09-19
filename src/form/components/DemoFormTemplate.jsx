@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useState } from "react";
+import React, { useLayoutEffect, useRef, useState } from "react";
 import {
   Alert,
   Container,
@@ -27,14 +27,14 @@ function DemoFormTemplate({
   description,
   onSubmit,
   onReset,
-  errorMsg,
+  errorMsg = "",
   children,
 }) {
   const [resetCount, setResetCount] = useState(0);
   const [submissionCount, setSubmissionCount] = useState(0);
 
   // Use a ref to track the form renders
-  const formRenderCount = React.useRef(0);
+  const formRenderCount = useRef(0);
 
   useLayoutEffect(() => {
     formRenderCount.current += 1;
@@ -61,16 +61,22 @@ function DemoFormTemplate({
         header={<FormHeader description={description} header={title} />}
         actions={<FormHeaderActions onClick={handleOnReset} />}
       >
-        <SpaceBetween size="xxl">
-          <MetricsGrid
-            renderCount={formRenderCount.current}
-            submissionCount={submissionCount}
-            resetCount={resetCount}
-          />
+        <SpaceBetween size="xl">
+          <Container variant="stacked">
+            <MetricsGrid
+              renderCount={formRenderCount.current}
+              submissionCount={submissionCount}
+              resetCount={resetCount}
+            />
+          </Container>
           <Container variant="stacked">
             <SpaceBetween size="xs">{children}</SpaceBetween>
           </Container>
-          {errorMsg && <Alert type="error">{errorMsg}</Alert>}
+          {errorMsg.length > 0 && (
+            <Alert key="form-error-msg" type="error">
+              {errorMsg}
+            </Alert>
+          )}
         </SpaceBetween>
       </Form>
     </form>
