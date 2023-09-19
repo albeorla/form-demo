@@ -10,7 +10,7 @@ import {
   hasErrors,
 } from "../form/utils/stateUtils";
 
-const ReactBuiltInFormDemo = () => {
+const CustomFormDemo = () => {
   const [form, setForm] = useState(getDefaultState());
   const [errors, setErrors] = useState(getDefaultState());
   const [touched, setTouched] = useState(getDefaultTouched());
@@ -201,4 +201,4 @@ const ReactBuiltInFormDemo = () => {
     </DemoFormTemplate>
   );
 };
-export default ReactBuiltInFormDemo;
+export default CustomFormDemo;
