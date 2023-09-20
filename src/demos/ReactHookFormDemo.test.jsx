@@ -23,11 +23,9 @@ describe("ReactHookFormDemo", () => {
     const { getByLabelText, getByText } = render(<ReactHookFormDemo />);
     const firstNameInput = getByLabelText("First Name");
     const lastNameInput = getByLabelText("Last Name");
-    // ... repeat for all other inputs
 
     fireEvent.change(firstNameInput, { target: { value: "John" } });
     fireEvent.change(lastNameInput, { target: { value: "Doe" } });
-    // ... repeat for all other inputs
 
     const submitButton = getByText("Submit");
     fireEvent.click(submitButton);

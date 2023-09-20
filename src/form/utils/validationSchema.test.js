@@ -44,8 +44,6 @@ describe("validationSchema", () => {
     await expect(validationSchema.isValid(validObject)).resolves.toBe(true);
   });
 
-  // Similar tests can be written for other fields.
-
   it("should require ZIP code", async () => {
     await expect(
       validationSchema.isValid({

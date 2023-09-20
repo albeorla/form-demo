@@ -33,7 +33,6 @@ describe("<ControlledInput />", () => {
     const input = getByRole("textbox");
     userEvent.type(input, "test input");
 
-    // Fire a custom event with detail property
     fireEvent.change(input, {
       target: { value: "test input" },
       detail: { value: "test input" },

@@ -3,8 +3,6 @@ import { fireEvent, render, waitFor } from "@testing-library/react";
 import CustomFormDemo from "./CustomFormDemo";
 
 describe("CustomFormDemo", () => {
-  // ... other tests
-
   it("should clear error message when input is valid", async () => {
     const { getByPlaceholderText, queryByText } = render(<CustomFormDemo />);
     const input = getByPlaceholderText("First Name");
