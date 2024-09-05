@@ -13,6 +13,7 @@ export const getDefaultState = () => ({
   dob: "",
   ssn: "",
 });
+
 /**
  * Returns an object with all fields set to touched
  */
